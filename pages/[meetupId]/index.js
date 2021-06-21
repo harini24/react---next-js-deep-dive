@@ -31,7 +31,7 @@ export async function getStaticPaths() {
     client.close()
 
     return {
-        fallback: true,// generate page dynamically for ids not in path, if false throws 404 page not found error for ids not specifies
+        fallback: 'blocking',// generate page dynamically for ids not in path, if false throws 404 page not found error for ids not specifies
         paths: meetups.map(meetup => ({ params: { meetupId: meetup._id.toString() } }))
     }
 }
