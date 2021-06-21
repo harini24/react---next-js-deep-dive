@@ -1,9 +1,9 @@
 import MeetupList from '../components/meetups/MeetupList'
 import Layout from '../components/layout/Layout'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { MongoClient } from 'mongodb'
 import { key } from '../key'
-
+import Head from 'next/head'
 
 function HomePage(props) {
 
@@ -17,7 +17,16 @@ function HomePage(props) {
     // return <Layout>
     //     <MeetupList meetups={DUMMY_MEETUPS} />
     // </Layout>
-    return <MeetupList meetups={props.meetups} />
+    return <Fragment>
+        <Head>
+            <title>React Meetups using Next JS</title>
+            <meta
+                name="description"
+                content='Browse a hige list of highly active react meetups'
+            />
+        </Head>
+        <MeetupList meetups={props.meetups} />
+    </Fragment>
 }
 
 // export async function getServerSideProps(context) {
